@@ -134,10 +134,10 @@ class SpaceTimeCurvature(ThreeDScene):
         self.add(moon_trail)  # Adiciona a linha principal por cima
         
         moon.f_always.move_to(
-            lambda: self.get_orbital_position(earth.get_center(), 3, 5, 3, 5.5)
+            lambda: self.get_orbital_position(earth.get_center(), 3, 5, 3, tilt=5.5)
         )
         sun.f_always.move_to(
-            lambda: self.get_orbital_position(sun.get_center(), 0.1, 0.2, 1)
+            lambda: self.get_orbital_position(ORIGIN, 0.1, 0.2, 0.6)
         )
 
         # adding plane curvature
