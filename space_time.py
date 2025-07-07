@@ -136,9 +136,9 @@ class SpaceTimeCurvature(ThreeDScene):
         moon.f_always.move_to(
             lambda: self.get_orbital_position(earth.get_center(), 3, 5, 3, 5.5)
         )
-        # sun.f_always.move_to(
-        #     lambda: self.get_orbital_position(sun.get_center(), 0.1, 0.2, 1)
-        # )
+        sun.f_always.move_to(
+            lambda: self.get_orbital_position(sun.get_center(), 0.1, 0.2, 1)
+        )
 
         # adding plane curvature
         grid = TexturedSurface(
