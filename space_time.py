@@ -35,7 +35,23 @@ class SpaceTimeCurvature(ThreeDScene):
 
         # always_rotate(earth, 2 * DEG, axis=axis_line)
         earth.always.rotate(2 * DEG, axis=axis_line)
+        
+        # Introdução suave - câmera próxima da Terra
+        frame = self.frame
+        frame.reorient(0, 60).set_width(8)
+        frame.move_to(earth.get_center())
+        
+        # Aguarda um pouco para mostrar a Terra
         self.wait(2)
+        
+        # Afasta um pouco para mostrar o contexto
+        self.play(
+
+            frame.animate.set_width(60),
+            run_time=1
+        )
+        
+        self.wait(1)
 
         # Adding Sun
         sun_radius = 6
@@ -51,7 +67,7 @@ class SpaceTimeCurvature(ThreeDScene):
             center=sun.get_center(),
             radius=sun_radius,
             color=YELLOW,
-            glow_factor=1.5,
+            glow_factor=2.5,
             z_index=2,
         )
         glow.f_always.move_to(sun.get_center)
@@ -153,12 +169,12 @@ class SpaceTimeCurvature(ThreeDScene):
         grid.add_updater(lambda p: p.set_points(update_grid_curvature(p.get_points())))
         
 
-        # frame following the earth
-        frame = self.frame
+        # Configuração da câmera para seguir a Terra
         frame.reorient(0, 50).set_width(15)
         frame.f_always.move_to(earth.get_center)
         
-        # Primeira órbita elíptica - câmera próxima
+        # Primeira 
+        #órbita elíptica - câmera próxima
         self.wait(3)
 
         # Segunda órbita - afasta a câmera
@@ -189,14 +205,14 @@ class SpaceTimeCurvature(ThreeDScene):
         # Volta para posição normal
         self.play(
             frame.animate.set_width(40),
-            run_time=2
+            run_time=0.6
         )
         
         # Transição para frente da Terra (olhando para trás)
         self.play(
             frame.animate.reorient(180, 75
             ).move_to(earth.get_center() + UP * 5),
-            run_time=5
+            run_time=4.5
         )
 
         # Aguarda o resto da animação
