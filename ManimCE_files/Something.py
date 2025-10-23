@@ -42,8 +42,8 @@ class waves(MovingCameraScene):
             )
         )
     
-        src = Tex("Os 6 $\pi \\; \cdot$ R")
-        tar = Tex("Parábolas")
+        src = Text("Os 6 $\pi \\; \cdot$ R", color = YELLOW, font_size=60, slant=ITALIC)
+        tar = Tex("Parábolas", color = YELLOW, font_size=60, slant=ITALIC)
         self.play(Write(src))
         self.wait(1)
         self.play(TransformMatchingShapes(src, tar, path_arc=PI/2))

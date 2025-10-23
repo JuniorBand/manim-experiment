@@ -247,8 +247,8 @@ class SpaceTimeCurvature(ThreeDScene):
 
         orbit_position = rotate_vector(
             vector= np.array([x, y, 0]),
-            angle=tilt * DEG,
-            axis=UP,
+            angle= tilt * DEG,
+            axis= UP,
         )
         
         return center + orbit_position
